@@ -51,7 +51,7 @@ hl.env("MOZ_ENABLE_WAYLAND",                "1")
 -- ── Monitors ─────────────────────────────────────────────────────────────
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1 })
 for _, m in ipairs(vars.monitors) do
-  hl.monitor({ output = m.output, mode = m.mode, position = m.position, scale = m.scale, transform = m.transform })
+  hl.monitor({ output = m.output, mode = m.mode, position = m.position, scale = m.scale, transform = m.transform, bitdepth = 10, cm = m.colorPreset})
 end
 
 -- ── Settings ─────────────────────────────────────────────────────────────

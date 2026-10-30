@@ -7,6 +7,7 @@
   networking = {
     hostName = "${host}";
     networkmanager.enable = true;
+    networkmanager.dns = "systemd-resolved";
     timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
     firewall = {
       enable = true;

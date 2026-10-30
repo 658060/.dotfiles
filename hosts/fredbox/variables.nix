@@ -12,9 +12,9 @@
 
   # Only keys that differ from the modules/core/variables.nix defaults.
   extraMonitorSettings = [
-    { output = "DP-3";     mode = "2560x1440@240";  position = "0x0";        scale = "1"; transform = "0"; }
-    { output = "DP-2";     mode = "2560x1440@144";  position = "2560x-510";  scale = "1"; transform = "1"; }
-    { output = "HDMI-A-1"; mode = "2560x1440@144";  position = "-1440x-590"; scale = "1"; transform = "3"; }
+    { output = "DP-3";     mode = "2560x1440@240";  position = "0x0";        scale = "1"; transform = "0"; colorPreset = "hdr";}
+    { output = "DP-2";     mode = "2560x1440@144";  position = "2560x-510";  scale = "1"; transform = "1"; colorPreset = "auto";}
+    { output = "HDMI-A-1"; mode = "2560x1440@144";  position = "-1440x-590"; scale = "1"; transform = "3"; colorPreset = "auto"; }
   ];
   defaultWallpaper = "847928.jpg";
 

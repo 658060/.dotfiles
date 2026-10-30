@@ -65,6 +65,7 @@
       clementine
       clock-rs
       dust
+      libretro.swanstation
       # marked unsafe
       # element-desktop
       edopro # YGO simulator
@@ -88,12 +89,12 @@
       libnotify
       libvirt
       lm_sensors
-      lmms
+      # lmms
       lxqt.lxqt-policykit
       mask
       masklint
       mpv
-      mullvad-vpn
+      # mullvad-vpn
       nicotine-plus
       notes
       obs-studio
@@ -102,7 +103,8 @@
       pavucontrol
       pciutils
       pcsx2
-      picard
+      
+      # picard
       playerctl
       prusa-slicer
       qbittorrent-enhanced
@@ -131,7 +133,7 @@
       osu-lazer-bin
       prismlauncher # minecraft launcher
       # # fails to build 2026-01-01
-      retroarch-full # generic emu
+      # retroarch-full # generic emu
     ]
     ++ lib.optionals config.variables.gamedev [
       # broken 2026-01-01
@@ -156,9 +158,6 @@
             --prefix LD_LIBRARY_PATH : "${pkgs.pipewire.jack}/lib"
         '';
       })
-
-      # --- Plugin Hosts ---
-      carla               # Modular plugin host / pedalboard, supports Windows VST via yabridge
 
       # --- Standalone Guitar Processors ---
       guitarix
