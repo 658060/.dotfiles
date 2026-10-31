@@ -94,7 +94,6 @@
       mask
       masklint
       mpv
-      # mullvad-vpn
       nicotine-plus
       notes
       obs-studio
@@ -118,6 +117,7 @@
       usbutils
       v4l-utils
       vlc
+      webcord
       wget
       xrandr
       zoxide

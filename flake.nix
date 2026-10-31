@@ -7,7 +7,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:NixOS/nixpkgs";
     nur.url = "github:nix-community/NUR";
     nvf.url = "github:notashelf/nvf";
     quickshell = {
@@ -40,6 +39,38 @@
         customPkgs = import ./modules/packages {pkgs = prev;};
         waybar = prev.waybar.overrideAttrs (old: {
           patches = (old.patches or []) ++ [ ./modules/home/waybar/hyprland-lua-dispatch.patch ];
+        });
+        # discord retired the modal api that 1.6.5's ScreenSharePicker uses, so
+        # after the portal picker the settings modal crashes and the share is
+        # granted an empty stream ("Invalid capture constraints"). 1.6.6+
+        # migrated (Vesktop 04e9027). hashes from nixpkgs#553927; drop this
+        # overlay once that lands in the pinned nixpkgs.
+        vesktop = prev.vesktop.overrideAttrs (old: rec {
+          version = "1.6.7";
+          src = prev.fetchFromGitHub {
+            owner = "Vencord";
+            repo = "Vesktop";
+            rev = "v${version}";
+            hash = "sha256-Y74FIqcY26Dizz+DoY+r8caOfX+4/VmiEbmhcOpMHqE=";
+          };
+          pnpmDeps = old.pnpmDeps.overrideAttrs (o: {
+            pname = "vesktop-pnpm-deps";
+            inherit version src;
+            outputHash = "sha256-AK+ZbylpG7iKWKsIA0nfFfZYP7HaTCTSeDbNUFx/iY4=";
+          });
+        });
+        # 1.4.1 still tears down screencast streams when dma-buf alloc fails
+        # and the session renegotiates to shm, which breaks vesktop/discord
+        # screenshare (xdph #418; fixed by #424 and #425, merged but
+        # unreleased). pin master until 1.4.2, then drop this.
+        xdg-desktop-portal-hyprland = prev.xdg-desktop-portal-hyprland.overrideAttrs (old: {
+          version = "1.4.1-unstable-2026-08-17";
+          src = prev.fetchFromGitHub {
+            owner = "hyprwm";
+            repo = "xdg-desktop-portal-hyprland";
+            rev = "59d429bf45aed4e2209043c0c36565ad8e2859a5";
+            hash = "sha256-frEFLVRj8xXvBBDs44IRiqHo6R2PxsRpluygL7abjjI=";
+          };
         });
       })
     ];
