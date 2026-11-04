@@ -51,7 +51,7 @@ hl.env("ELECTRON_OZONE_PLATFORM_HINT",      "auto")
 -- ── Monitors ─────────────────────────────────────────────────────────────
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1 })
 for _, m in ipairs(vars.monitors) do
-  hl.monitor({ output = m.output, mode = m.mode, position = m.position, scale = m.scale })
+  hl.monitor({ output = m.output, mode = m.mode, position = m.position, scale = m.scale, transform = m.transform })
 end
 
 -- ── Settings ─────────────────────────────────────────────────────────────
