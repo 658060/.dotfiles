@@ -12,8 +12,8 @@
 
   # Only keys that differ from the modules/core/variables.nix defaults.
   extraMonitorSettings = [
-    { output = "DP-1"; mode = "1920x1080@144"; position = "auto"; scale = "1"; }
-    { output = "DP-3"; mode = "2560x1440@144"; position = "auto-left"; scale = "1"; }
+    { output = "DP-1"; mode = "1920x1080@144"; position = "auto"; scale = "1"; transform = "0"; }
+    { output = "DP-3"; mode = "2560x1440@144"; position = "auto-left"; scale = "1"; transform = "0"; }
   ];
   extraHardwareSettings = {
     opengl = { nvidia_anti_flicker = 0; };

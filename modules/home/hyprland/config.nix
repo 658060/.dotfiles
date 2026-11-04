@@ -35,7 +35,7 @@
       kbVariant      = ${toLua keyboardLayout},
       wallpaper      = "/home/${username}/Pictures/Wallpapers/${defaultWallpaper}",
       monitors = {
-    ${lib.concatMapStrings (m: "    { output = ${toLua m.output}, mode = ${toLua m.mode}, position = ${toLua m.position}, scale = ${m.scale} },\n") extraMonitorSettings}  },
+    ${lib.concatMapStrings (m: "    { output = ${toLua m.output}, mode = ${toLua m.mode}, position = ${toLua m.position}, scale = ${m.scale}, transform = ${m.transform} },\n") extraMonitorSettings}  },
       hardware = ${toLua extraHardwareSettings},
     }
     return vars
